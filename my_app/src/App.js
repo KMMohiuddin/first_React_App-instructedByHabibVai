@@ -15,7 +15,7 @@ class App extends Component {
                                                             */
 
   state = {
-    number: 10
+    number: 4
   };
 
   increment = () => {
@@ -29,8 +29,13 @@ class App extends Component {
   }
   decrement = () => {
                                                             // dynamically update the button if number is less than 0;    
+    const number = this.state.number;
     if (number === 0) {
-          alert('you are at 0');
+         
+          const newClassName = "btn btn-secondary";
+          const newState = {number: this.state.number, className: newClassName};
+          this.setState(newState);
+          //alert('you are at 0');
     } else {
           const newNumber = this.state.number - 1;
           const newState = {number: newNumber};
@@ -48,11 +53,11 @@ class App extends Component {
                                                                   </React.Fragment>
                                                               */
           <div> 
-            <h1> hurrah </h1>
-            <button onClick={this.decrement} type="button" class="btn btn-danger"> -</button>
-            <h1>{this.state.number}</h1>
-            <button onClick={this.increment} type="button" class="btn btn-success"> +</button>
-            <br></br>
+            <h1> First react app </h1>
+            <button onClick={this.decrement} type="button" class="btn btn-danger"> - </button>
+            {this.state.number}
+            <button onClick={this.increment} type="button" class="btn btn-success"> + </button>
+            
           </div>
 
     );
