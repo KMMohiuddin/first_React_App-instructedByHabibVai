@@ -15,7 +15,8 @@ class App extends Component {
                                                             */
 
   state = {
-    number: 4
+    number: 4 ,
+    className: 'btn btn-danger'
   };
 
   increment = () => {
@@ -35,27 +36,26 @@ class App extends Component {
           const newClassName = "btn btn-secondary";
           const newState = {number: this.state.number, className: newClassName};
           this.setState(newState);
-          //alert('you are at 0');
+          alert('you are at 0');
     } else {
+      const newClassName = "btn btn-danger";
           const newNumber = this.state.number - 1;
-          const newState = {number: newNumber};
+          const newState = {number: newNumber, className: newClassName};
           this.setState(newState);
           const number = this.state.number;
     }
   }
   render() {
-    return (
-                                                            //<h1>This is from APP.js File.</h1>
-                                                              /*
-                                                                  <React.Fragment>
+    return (                                                        
+                                                                  /* <React.Fragment>
                                                                   <h1>This is from APP.js File.</h1>
                                                                   <button> click 1</button>
-                                                                  </React.Fragment>
-                                                              */
+                                                                  </React.Fragment> */
+                                                             
           <div> 
             <h1> First react app </h1>
-            <button onClick={this.decrement} type="button" class="btn btn-danger"> - </button>
-            {this.state.number}
+            <button onClick={this.decrement} type="button" class={this.state.className}> - </button>
+            <span class="p-3">{this.state.number} </span>
             <button onClick={this.increment} type="button" class="btn btn-success"> + </button>
             
           </div>
