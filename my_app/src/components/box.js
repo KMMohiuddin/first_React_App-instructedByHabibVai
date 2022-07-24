@@ -1,41 +1,49 @@
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Box extends Component {
   state = {
     number: 4,
-    className: 'btn btn-danger'
+    className: "btn btn-danger",
   };
 
   increment = () => {
     const newNumber = this.state.number + 1;
-    const newState = {number: newNumber};
+    const newState = { number: newNumber, className: "btn btn-danger" };
     this.setState(newState);
-  }
+  };
 
   decrement = () => {
     const number = this.state.number;
     if (number === 0) {
       const newClassName = "btn btn-secondary";
-      const newState = {number: this.state.number, className: newClassName};
+      const newState = { number: this.state.number, className: newClassName };
       this.setState(newState);
-      alert('you are at 0');
+      alert("you are at 0");
     } else {
-      const newClassName = "btn btn-danger";
       const newNumber = this.state.number - 1;
-      const newState = {number: newNumber, className: newClassName};
+      const newState = { number: newNumber };
       this.setState(newState);
       const number = this.state.number;
     }
-  }
+  };
   render() {
     return (
       <div>
-        <br/>
-        <button onClick={this.decrement} type="button" class={this.state.className}> - </button>
+        <br />
+        <button
+          onClick={this.decrement}
+          type="button"
+          class={this.state.className}
+        >
+          {" "}
+          -{" "}
+        </button>
         <span class="p-3">{this.state.number} </span>
-        <button onClick={this.increment} type="button" class="btn btn-success"> + </button>
-        
+        <button onClick={this.increment} type="button" class="btn btn-success">
+          {" "}
+          +{" "}
+        </button>
       </div>
     );
   }
