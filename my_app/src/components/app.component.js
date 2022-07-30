@@ -1,25 +1,27 @@
 import React, { Component } from "react";
 //import Box from './components/box.js';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Box from "./box.js";
+import Box from "./box.component.js";
 class App extends Component {
   state = {
-    boxes: [0],
+    boxes: [1,5,7,9],
   };
   createBox = () => {
     const { boxes } = this.state;
-    this.setState({ boxes: [...boxes, 0] }); //spread operator
+    this.setState({ boxes: [...boxes, 1] }); //spread operator
   };
   render() {
     return (
       <div>
-        <button className="btn btn-primary" onClick={this.createBox}>Add New</button> <br/>
-        {this.state.boxes.map((number, index) => {
+        <button className="btn btn-success" onClick={this.createBox}>Add New</button> <br/>
+        
+        
+        {this.state.boxes.map((number, index) => (
           <div key={number}>
-            <Box num={number} />;
+            <Box num={number}/>
           </div>
           
-        })}
+        ))}
       </div>
     );
   }

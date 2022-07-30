@@ -4,13 +4,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class Box extends Component {
   state = {
     number: 10,
-    className: "btn btn-danger",
+    className: "btn btn-danger p-2",
   };
   constructor ({ num }) {
     super();
     this.state.number = num;
     this.state.className = "btn btn-danger";
+    this.state = {
+      number: num,
+      className: "btn btn-danger",
+    };
+    //console.log(num);
+
   }
+  // constructor(props) { //props holo ekta object //properties are passed in as an argument
+  //   super(props);
+  //   this.state.number = props.num;
+  //   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+  //   console.log(props);
+  //   console.log('++++++++++++++++++')
+  //   const number = props.num;
+  //   console.log(number);
+  //   const name = props.name;
+  //   console.log(number , name);
+
+  // }
 
   increment = () => {
     const newNumber = this.state.number + 1;
