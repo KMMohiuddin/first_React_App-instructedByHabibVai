@@ -1,55 +1,70 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// class Component{
+//   constructor(a){
+//     this.props=a;
+//   }
+// }
 class Box extends Component {
-  state = {
-    number: 10,
-    className: "btn btn-danger p-2",
-  };
-  constructor ({ num }) {
-    super();
-    this.state.number = num;
-    this.state.className = "btn btn-danger";
-    this.state = {
-      number: num,
-      className: "btn btn-danger",
-    };
-    //console.log(num);
-
+  state={
+    className: "btn btn-danger",
   }
-  // constructor(props) { //props holo ekta object //properties are passed in as an argument
-  //   super(props);
-  //   this.state.number = props.num;
-  //   console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-  //   console.log(props);
-  //   console.log('++++++++++++++++++')
-  //   const number = props.num;
-  //   console.log(number);
-  //   const name = props.name;
-  //   console.log(number , name);
+  // state = {
+  //   number: 10,
+  //   id: null,
+  //   className: "btn btn-danger p-2",
+  // };
+  // constructor({ num, id, onDelete, onIncrement, onDecrement }) {
+  //   super();
 
+  //   this.state = {
+  //     number: num,
+  //     id: id,
+  //     className: "btn btn-danger",
+  //     onDelete: onDelete,
+  //     onIncrement: onIncrement,
+  //     onDecrement: onDecrement,
+  //   };
   // }
 
+  // increment = () => {
+  //   const newNumber = this.state.number + 1;
+  //   const newState = { number: newNumber, className: "btn btn-danger" };
+  //   this.setState(newState);
+  // };
+  constructor(props){
+    super(props);
+  }
   increment = () => {
-    const newNumber = this.state.number + 1;
-    const newState = { number: newNumber, className: "btn btn-danger" };
-    this.setState(newState);
+  
+    this.props.onIncrement(this.props.id);
   };
 
+  // decrement = () => {
+  //   const number = this.state.number;
+  //   if (number === 0) {
+  //     const newClassName = "btn btn-secondary";
+  //     const newState = { number: this.state.number, className: newClassName };
+  //     this.setState(newState);
+  //     //alert("you are at 0");
+  //   } else {
+  //     const newNumber = this.state.number - 1;
+  //     const newState = { number: newNumber };
+  //     this.setState(newState);
+  //     const number = this.state.number;
+  //   }
+  // };
   decrement = () => {
-    const number = this.state.number;
-    if (number === 0) {
-      const newClassName = "btn btn-secondary";
-      const newState = { number: this.state.number, className: newClassName };
-      this.setState(newState);
-      //alert("you are at 0");
-    } else {
-      const newNumber = this.state.number - 1;
-      const newState = { number: newNumber };
-      this.setState(newState);
-      const number = this.state.number;
-    }
+    this.props.onDecrement(this.props.id);
   };
+  delete = () => {
+    const { id } = this.props;
+    this.props.onDelete(id);
+    //alert("deleteBox called");
+    console.log("new id", id);
+  };
+
   render() {
     return (
       <div>
@@ -62,11 +77,15 @@ class Box extends Component {
           {" "}
           -{" "}
         </button>
-        <span class="p-3">{this.state.number} </span>
-        <button onClick={this.increment} type="button" class="btn btn-primary">
+        <span class="p-3">{this.props.num} </span>
+        <button onClick={this.increment} type="button" className="btn btn-primary p-2">
           {" "}
           +{" "}
         </button>
+        <button className="btn btn-danger p-2 ms-2" onClick={this.delete}>
+          delete
+        </button>{" "}
+        <br />
       </div>
     );
   }
